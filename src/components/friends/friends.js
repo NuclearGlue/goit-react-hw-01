@@ -1,11 +1,17 @@
-const friends = ({ friends }) => {
+import PropTypes from 'prop-types';
+import css from '../styles/friendsStyle.module.css';
+
+const friendList = ({ friends }) => {
   return (
-    <ul className="friend-list">
-      {friends.map(({ avatar, name, online, id }) => {
+    <ul className={css.friend_list}>
+      {friends.map(({ avatar, name, isOnline, id }) => {
         return (
-          <li key={id} className="item">
-            <span className="status">{online}</span>
-            <img className="avatar" src={avatar} alt={name} width="48" />
+          <li key={id} className={css.item}>
+            <span
+              className={css.status}
+              style={{ backgroundColor: isOnline === true ? 'green' : 'red' }}
+            ></span>
+            <img className={css.avatar} src={avatar} alt={name} width="48" />
             <p className="name">{name}</p>
           </li>
         );
@@ -14,4 +20,11 @@ const friends = ({ friends }) => {
   );
 };
 
-export default friends;
+friendList.prototype = {
+  avatar: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  isOnline: PropTypes.bool.isRequired,
+  id: PropTypes.number.isRequired,
+};
+
+export default friendList;

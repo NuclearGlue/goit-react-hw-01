@@ -1,28 +1,38 @@
-const trancations = ({ transactions }) => {
+import PropTypes from 'prop-types';
+import css from '../styles/transactionsStyle.module.css';
+
+const trancations = ({ items }) => {
   return (
-    <table class="transaction-history">
+    <table className={css.transactions_history}>
       <thead>
-        <tr>
-          <th>Type</th>
-          <th>Amount</th>
-          <th>Currency</th>
+        <tr className={css.head}>
+          <th className={css.item}>Type</th>
+          <th className={css.item}>Amount</th>
+          <th className={css.item}>Currency</th>
         </tr>
       </thead>
-
       <tbody>
-        <tr>
-          <td>Invoice</td>
-          <td>125</td>
-          <td>USD</td>
-        </tr>
-        <tr>
-          <td>Withdrawal</td>
-          <td>85</td>
-          <td>USD</td>
-        </tr>
+        {items.map((elem, index) => {
+          return (
+            <tr
+              key={elem.id}
+              style={{ backgroundColor: index % 2 === 0 ? 'gray' : 'yellow' }}
+            >
+              <td>{elem.type}</td>
+              <td>{elem.amount}</td>
+              <td>{elem.currency}</td>
+            </tr>
+          );
+        })}
       </tbody>
     </table>
   );
 };
 
+trancations.prototype = {
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  amount: PropTypes.string.isRequired,
+  currency: PropTypes.string.isRequired,
+};
 export default trancations;

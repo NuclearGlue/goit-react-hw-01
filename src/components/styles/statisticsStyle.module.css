@@ -1,0 +1,13 @@
+.stat_list{
+    display: flex;
+    justify-content: center;
+
+
+}
+.item{
+    margin-left: 10px;
+}
+.title{
+    text-align: center;
+}
+
