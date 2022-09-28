@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import css from '../styles/transactionsStyle.module.css';
 
-const trancations = ({ items }) => {
+const Trancations = ({ items }) => {
   return (
     <table className={css.transactions_history}>
       <thead>
@@ -29,10 +29,10 @@ const trancations = ({ items }) => {
   );
 };
 
-trancations.prototype = {
+Trancations.propTypes = {
   id: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   amount: PropTypes.string.isRequired,
   currency: PropTypes.string.isRequired,
 };
-export default trancations;
+export default Trancations;
