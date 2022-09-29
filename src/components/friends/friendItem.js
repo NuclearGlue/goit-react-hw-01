@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import css from '../styles/friendsStyle.module.css';
 
-const FriendItem = ({ avatar, name, isOnline, id }) => {
+const FriendItem = ({ avatar, name, isOnline }) => {
   return (
-    <li key={id} className={css.item}>
+    <li className={css.item}>
       <span
         className={css.status}
         style={{ backgroundColor: isOnline === true ? 'green' : 'red' }}
@@ -18,7 +18,6 @@ FriendItem.propTypes = {
   avatar: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   isOnline: PropTypes.bool.isRequired,
-  id: PropTypes.number.isRequired,
 };
 
 export default FriendItem;
